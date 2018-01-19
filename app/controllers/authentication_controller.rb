@@ -1,4 +1,4 @@
-class AuthController < ApplicationController
+class AuthenticationController < ApplicationController
   skip_before_action :auth_request
 
   def authenticate
