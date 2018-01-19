@@ -1,4 +1,4 @@
-class AuthUser
+class AuthenticateUser
   prepend SimpleCommand
 
   def initialize(username, password)
@@ -20,4 +20,4 @@ class AuthUser
       errors.add :user_auth, 'Invalid Username or Password'
       nil
     end
-  end 
+  end
