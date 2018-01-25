@@ -24,8 +24,10 @@ class AuthorizeRequest
 
   def http_auth_header
     if headers['Authorization'].present?
+      puts 'token present'
       return headers['Authorization'].split(' ').last
     else
+      puts 'token missing'
       errors.add(:token, 'Missing Token')
     end
     nil
