@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
-    # include Knock::Authenticable
   before_action :auth_request
+
   attr_reader :current_user
 
   private

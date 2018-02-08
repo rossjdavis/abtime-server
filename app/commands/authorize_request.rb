@@ -14,7 +14,7 @@ class AuthorizeRequest
   attr_reader :headers
 
   def user
-    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    @user ||= User.find(decoded_auth_token[:user]) if decoded_auth_token
     @user ||= errors.add(:token, 'Invalid Token') && nil
   end
 
@@ -25,6 +25,7 @@ class AuthorizeRequest
   def http_auth_header
     if headers['Authorization'].present?
       puts 'token present'
+      puts headers['Authorization']
       return headers['Authorization'].split(' ').last
     else
       puts 'token missing'
