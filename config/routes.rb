@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   scope '/auth' do
-    post 'user_token' => 'user_token#create'
+    post 'login_request' => 'user_token#create'
+    post 'admin_request' => 'admin_auth#create'
   end
 
   scope '/employee' do
