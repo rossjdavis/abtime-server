@@ -1,13 +1,14 @@
 class User < ApplicationRecord
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :username, :password_digest
-  validates :username, uniqueness: true
+  def email_required?
+    false
+  end
 
-  has_many :logs
-  #
-  # def self.from_token_request request
-  #   username = request.params["auth"] && request.params["auth"]["username"]
-  #   self.find_by username: username
-  # end
+  def email_changed?
+    false
+  end
 end

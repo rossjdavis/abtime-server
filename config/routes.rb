@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
+  # devise_for :users
   scope '/auth' do
-    post 'login_request' => 'user_token#create'
-    post 'admin_request' => 'admin_auth#create'
+    post 'login_request' => 'user_token#authenticate_user'
+    # post 'admin_request' => 'admin_auth#create'
   end
 
   scope '/employee' do
