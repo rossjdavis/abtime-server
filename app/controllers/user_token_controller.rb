@@ -13,8 +13,6 @@ class UserTokenController < ApplicationController
   # end
 
   def authenticate_user
-    puts 'params'
-    puts params
     user = User.find_for_database_authentication(username: params[:username])
     if user and user.valid_password?(params[:password])
       render json: payload(user)

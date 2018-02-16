@@ -22,7 +22,6 @@ class ApplicationController < ActionController::API
   protected
   def authorize_request
     unless user_id_in_token
-      puts 'user id fail'
       render json: { error: ['Unauthorized'] }, status: :unauthorized
       return
     end
@@ -30,7 +29,6 @@ class ApplicationController < ActionController::API
     @current_user = User.find(auth_token[:user_id])
 
   rescue JWT::VerificationError, JWT::DecodeError
-    puts 'jwt fail'
     render json: { error: ['Unauthorized'] }, status: :unauthorized
   end
 
